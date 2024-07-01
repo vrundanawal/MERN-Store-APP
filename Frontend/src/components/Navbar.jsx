@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../public/fashionlogo.jpg';
 
 const Navbar = () => {
   const navItems = (
@@ -50,7 +51,7 @@ const Navbar = () => {
                 {navItems}
               </ul>
             </div>
-            <a className="text-2xl font-bold cursor-pointer">FashionStore</a>
+            <a className="text-2xl font-bold cursor-pointer">FashionStyle</a>
           </div>
           <div className="navbar-end space-x-3">
             <div className="navbar-center hidden lg:flex">
