@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../public/fashionlogo.jpg';
 
 const Navbar = () => {
+  //managed the state to show the shadow on scroll
+  const [showShadow, setShowShadow] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setShowShadow(true);
+      } else {
+        setShowShadow(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const navItems = (
     <>
       <li>
@@ -20,8 +36,14 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0">
-        <div className="navbar bg-base-100">
+      <div
+        className={`max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 ${
+          showShadow
+            ? 'sticky-navbar shadow-md bg-base-200 duration-300 transition-all ease-in-out'
+            : ''
+        }`}
+      >
+        <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
               <div
